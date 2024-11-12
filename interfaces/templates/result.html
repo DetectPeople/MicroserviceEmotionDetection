@@ -57,6 +57,22 @@
             background-color: #005bb5;
         }
     </style>
+    <script>
+        // Definir la función downloadEmotionsExcel
+        function downloadEmotionsExcel() {
+            // Obtener el videoId del atributo de datos
+            const videoId = document.getElementById('download-button').dataset.videoId;
+            // Verificar si el videoId es válido
+            if (videoId) {
+                // Construir la URL de descarga con el videoId
+                const downloadUrl = `/download_emotions_excel/${videoId}`;
+                // Redirigir al usuario a la URL de descarga
+                window.location.href = downloadUrl;
+            } else {
+                console.error("Video ID is undefined or invalid.");
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -74,7 +90,8 @@
             <a href="{{ url_for('emotion_api.select_video') }}">Select Another Video</a>
             <a href="http://127.0.0.1:5000/">Upload Video</a>
             <a href="http://127.0.0.1:5003/">Body Tracking & Heatmap</a>
-            <a href="{{ url_for('emotion_api.download_emotions_excel') }}">Download Emotions</a>
+            <!-- Botón de descarga actualizado -->
+            <a href="#" id="download-button" data-video-id="{{ video_id }}" onclick="downloadEmotionsExcel()">Download Emotions</a>
         </div>
     </div>
 </body>
