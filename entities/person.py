@@ -8,7 +8,11 @@ class Person(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     video_id = db.Column(db.Integer, db.ForeignKey('videos.id'), nullable=False)
-    identity = db.Column(db.String(100), nullable=True)  # This column must exist
+    identity = db.Column(db.String(100), nullable=True)
+
+    # New columns for age and gender estimation
+    age_estimation = db.Column(db.String(20), nullable=True)
+    gender_estimation = db.Column(db.String(20), nullable=True)
 
     # Relationships
     emotions = db.relationship('Emotion', back_populates='person', lazy=True)

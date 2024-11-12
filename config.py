@@ -10,6 +10,8 @@ class Config:
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     PROCESSED_FRAMES_DIR = os.path.join(BASE_DIR, 'processed_frames')
     ANNOTATED_VIDEOS_DIR = os.path.join(BASE_DIR, 'annotated_videos')
+    # Existing configurations...
+    MODELS_DIR = os.path.join(BASE_DIR, 'models')
 
     # Ensure directories exist
     os.makedirs(PROCESSED_FRAMES_DIR, exist_ok=True)
