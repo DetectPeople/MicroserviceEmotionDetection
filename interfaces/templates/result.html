@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion Detection Result</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .video-container {
+            margin: 20px 0;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .link-buttons {
+            margin-top: 20px;
+        }
+        .link-buttons a {
+            color: white;
+            text-decoration: none;
+            background-color: #0073e6;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+        .link-buttons a:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Emotion Detection Result</h1>
+
+        <div class="video-container">
+            <p>Processed Video:</p>
+            <video controls>
+                <source src="{{ url_for('emotion_api.get_video', video_filename=video_filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="link-buttons">
+            <a href="{{ url_for('emotion_api.select_video') }}">Select Another Video</a>
+            <a href="http://127.0.0.1:5000/">Upload Video</a>
+            <a href="http://127.0.0.1:5003/">Body Tracking & Heatmap</a>
+            <a href="{{ url_for('emotion_api.download_emotions_excel') }}">Download Emotions</a>
+        </div>
+    </div>
+</body>
+</html>
