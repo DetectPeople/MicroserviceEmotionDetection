@@ -118,3 +118,4 @@ class ProcessEmotionUseCase:
 
         logging.info("Emotion detection complete, annotated video generated.")
         return output_video_path
+
